@@ -108,6 +108,11 @@ class CarState():
     # initialize can parser
     self.car_fingerprint = CP.carFingerprint
 
+    # Add priusprime fingerprint to NO_DSU_CAR,
+    # activating use of upgraded steering sensor (19/20 models only?)
+    if self.CP.carFingerprint not in NO_DSU_CAR:
+      NO_DSU_CAR.append(self.CP.carFingerprint)
+
     # vEgo kalman filter
     dt = 0.01
     # Q = np.matrix([[10.0, 0.0], [0.0, 100.0]])
